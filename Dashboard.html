@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>CRM Dashboard</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+
+<body>
+
+    <!-- Navigation Menu -->
+    <nav>
+        <a href="dashboard.html">Dashboard</a>
+        <a href="customers.html">Customers</a>
+        <a href="pipeline.html">Pipeline</a>
+        <a href="analytics.html">Analytics</a>
+        <a href="automation.html">Automation</a>
+        <a href="saas.html">SaaS</a>
+    </nav>
+
+    <!-- Dashboard Header -->
+    <h1>CRM Dashboard</h1>
+
+    <!-- Statistic Cards -->
+    <div class="cards">
+        <div class="card">Total Customers<br>600</div>
+        <div class="card">Active Deals<br>29</div>
+        <div class="card">Monthly Revenue<br>$32,400</div>
+        <div class="card">Conversion Rate<br>40%</div>
+    </div>
+
+    <!-- Sales Chart -->
+    <canvas id="salesChart" width="400" height="150"></canvas>
+
+    <script src="script.js"></script>
+
+</body>
+
+</html>
