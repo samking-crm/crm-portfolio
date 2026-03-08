@@ -47,46 +47,44 @@ button:hover{background:#0056b3;}
 </head>
 <body>
 
-<div class="container">
-
-<h1>Welcome to my CRM portfolio Demo</h1>
-  
-<h2>CRM Portfolio Demo</h2>
-<p>Enter your name and email to access the CRM dashboard</p>
-
-<form id="leadForm">
-  <input type="text" name="name" placeholder="Enter your name" required>
-  <input type="email" name="email" placeholder="Enter your email" required>
-  <button type="submit">Enter CRM</button>
-</form>
-
+<div class="container" id="formContainer" style="display:none;">
+  <h1>Welcome to my CRM Portfolio Demo</h1>
+  <h2>My CRM Portfolio Demo</h2>
+  <p>Enter your name and email to access the CRM dashboard</p>
+  <form id="leadForm">
+    <input type="text" name="name" placeholder="Enter your name" required>
+    <input type="email" name="email" placeholder="Enter your email" required>
+    <button type="submit">Enter CRM</button>
+  </form>
 </div>
 
 <script>
-// If already submitted, go straight to dashboard
+// Redirect immediately if already submitted
 if(localStorage.getItem("submitted") === "true"){
   window.location.href = "dashboard.html";
+} else {
+  // Show form if not submitted
+  document.getElementById("formContainer").style.display = "block";
 }
 
 const form = document.getElementById("leadForm");
-
 form.addEventListener("submit", async function(event){
   event.preventDefault();
 
   const name = form.name.value;
   const email = form.email.value;
 
-  // send to Formspree
+  // Send email & name to Formspree
   await fetch("https://formspree.io/f/xaqdgorb", {
     method:"POST",
     body: JSON.stringify({name, email}),
     headers:{'Content-Type':'application/json','Accept':'application/json'}
   });
 
-  // mark as submitted
+  // Mark as submitted
   localStorage.setItem("submitted","true");
 
-  // redirect
+  // Redirect to dashboard
   window.location.href = "dashboard.html";
 });
 </script>
