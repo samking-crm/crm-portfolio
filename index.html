@@ -4,9 +4,6 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>CRM Portfolio Demo</title>
-
-<link rel="stylesheet" href="style.css">
-
 <style>
 body{
   font-family: Arial, sans-serif;
@@ -17,26 +14,16 @@ body{
   height:100vh;
   margin:0;
 }
-
 .container{
   background:white;
   padding:40px;
   border-radius:10px;
   box-shadow:0 5px 15px rgba(0,0,0,0.1);
   text-align:center;
-  width:300px;
+  width:320px;
 }
-
-h2{
-  margin:0;
-}
-
-p{
-  margin-top:10px;
-  font-size:14px;
-  color:#555;
-}
-
+h2{margin:0;}
+p{margin-top:10px;font-size:14px;color:#555;}
 input{
   width:100%;
   padding:10px;
@@ -45,7 +32,6 @@ input{
   border-radius:5px;
   box-sizing:border-box;
 }
-
 button{
   margin-top:15px;
   width:100%;
@@ -56,51 +42,51 @@ button{
   border-radius:5px;
   cursor:pointer;
 }
-
-button:hover{
-  background:#0056b3;
-}
+button:hover{background:#0056b3;}
 </style>
-
 </head>
 <body>
 
 <div class="container">
 
+<h1>Welcome to my CRM portfolio Demo</h1>
+  
 <h2>CRM Portfolio Demo</h2>
-<p>Enter your email to access the CRM dashboard</p>
-
-<form id="leadForm" action="https://formspree.io/f/xaqdgorb" method="POST">
-
-<input type="email" name="email" placeholder="Enter your email" required>
-
-<button type="submit">Enter CRM</button>
-
-</form>
-
-</div>
+<p>Enter your name and email to access the CRM dashboard</p>
 
 <form id="leadForm">
+  <input type="text" name="name" placeholder="Enter your name" required>
   <input type="email" name="email" placeholder="Enter your email" required>
   <button type="submit">Enter CRM</button>
 </form>
 
+</div>
+
 <script>
+// If already submitted, go straight to dashboard
+if(localStorage.getItem("submitted") === "true"){
+  window.location.href = "dashboard.html";
+}
+
 const form = document.getElementById("leadForm");
 
-form.addEventListener("submit", async function(event) {
-  event.preventDefault(); // stop default refresh
+form.addEventListener("submit", async function(event){
+  event.preventDefault();
 
+  const name = form.name.value;
   const email = form.email.value;
 
-  // send email via fetch
+  // send to Formspree
   await fetch("https://formspree.io/f/xaqdgorb", {
-    method: "POST",
-    body: JSON.stringify({ email }),
-    headers: { 'Content-Type': 'application/json', 'Accept':'application/json' }
+    method:"POST",
+    body: JSON.stringify({name, email}),
+    headers:{'Content-Type':'application/json','Accept':'application/json'}
   });
 
-  // redirect manually
+  // mark as submitted
+  localStorage.setItem("submitted","true");
+
+  // redirect
   window.location.href = "dashboard.html";
 });
 </script>
