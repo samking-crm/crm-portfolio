@@ -2,42 +2,56 @@
 <html>
 
 <head>
-    <title>CRM Dashboard</title>
-    <link rel="stylesheet" href="style.css">
-    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+<title>CRM Dashboard</title>
+
+<link rel="stylesheet" href="style.css">
+
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
 </head>
 
 <body>
+
 <script>
 if (localStorage.getItem("submitted") !== "true") {
   window.location.href = "index.html";
 }
 </script>
-    <!-- Navigation Menu -->
-    <nav>
-        <a href="dashboard.html">Dashboard</a>
-        <a href="customers.html">Customers</a>
-        <a href="pipeline.html">Pipeline</a>
-        <a href="analytics.html">Analytics</a>
-        <a href="automation.html">Automation</a>
-        <a href="saas.html">SaaS</a>
-    </nav>
 
-    <!-- Dashboard Header -->
-    <h1>CRM Dashboard</h1>
+<nav>
 
-    <!-- Statistic Cards -->
-    <div class="cards">
-        <div class="card">Total Customers<br>600</div>
-        <div class="card">Active Deals<br>29</div>
-        <div class="card">Monthly Revenue<br>$32,400</div>
-        <div class="card">Conversion Rate<br>40%</div>
-    </div>
+<a href="dashboard.html">Dashboard</a>
 
-    <!-- Sales Chart -->
-    <canvas id="salesChart" width="400" height="150"></canvas>
+<a href="customers.html">Customers</a>
 
-    <script src="script.js"></script>
+<a href="pipeline.html">Pipeline</a>
+
+<a href="analytics.html">Analytics</a>
+
+<a href="automation.html">Automation</a>
+
+<a href="saas.html">SaaS</a>
+
+</nav>
+
+<h1>CRM Dashboard</h1>
+
+<div class="cards">
+
+<div class="card">Total Customers<br>600</div>
+
+<div class="card">Active Deals<br>30</div>
+
+<div class="card">Monthly Revenue<br>$32,400</div>
+
+<div class="card">Conversion Rate<br>40%</div>
+
+</div>
+
+<canvas id="salesChart"></canvas>
+
+<script src="script.js"></script>
 
 </body>
 
