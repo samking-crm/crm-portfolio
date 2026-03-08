@@ -8,7 +8,11 @@
 </head>
 
 <body>
-
+<script>
+if (localStorage.getItem("submitted") !== "true") {
+  window.location.href = "index.html";
+}
+</script>
     <!-- Navigation Menu -->
     <nav>
         <a href="dashboard.html">Dashboard</a>
