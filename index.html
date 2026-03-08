@@ -1,32 +1,86 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-
-<title>Samking CRM Portfolio</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>CRM Portfolio Demo</title>
 
 <link rel="stylesheet" href="style.css">
 
-</head>
+<style>
+body{
+  font-family: Arial, sans-serif;
+  background:#f4f6f9;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  height:100vh;
+  margin:0;
+}
 
+.container{
+  background:white;
+  padding:40px;
+  border-radius:10px;
+  box-shadow:0 5px 15px rgba(0,0,0,0.1);
+  text-align:center;
+  width:300px;
+}
+
+h2{
+  margin:0;
+}
+
+p{
+  margin-top:10px;
+  font-size:14px;
+  color:#555;
+}
+
+input{
+  width:100%;
+  padding:10px;
+  margin-top:15px;
+  border:1px solid #ccc;
+  border-radius:5px;
+  box-sizing:border-box;
+}
+
+button{
+  margin-top:15px;
+  width:100%;
+  padding:10px;
+  background:#007bff;
+  color:white;
+  border:none;
+  border-radius:5px;
+  cursor:pointer;
+}
+
+button:hover{
+  background:#0056b3;
+}
+</style>
+
+</head>
 <body>
 
-<div class="gate">
+<div class="container">
 
-<h1>Welcome to My CRM Portfolio</h1>
-
-<p>Enter your email to access the CRM demo</p>
+<h2>CRM Portfolio Demo</h2>
+<p>Enter your email to access the CRM dashboard</p>
 
 <form id="leadForm" action="https://formspree.io/f/xaqdgorb" method="POST">
 
 <input type="email" name="email" placeholder="Enter your email" required>
 
- <input type="name" name="Name" placeholder="Enter your Name" required>
-
-<button type="submit">Access CRM</button>
+<button type="submit">Enter CRM</button>
 
 </form>
 
- <script>
+</div>
+
+<script>
 const form = document.getElementById("leadForm");
 
 form.addEventListener("submit", async function(event) {
@@ -34,14 +88,18 @@ form.addEventListener("submit", async function(event) {
 
   const data = new FormData(form);
 
-  await fetch(form.action, {
-    method: "POST",
-    body: data,
-    headers: {
-      'Accept': 'application/json'
+  await fetch(form.action,{
+    method:"POST",
+    body:data,
+    headers:{
+      'Accept':'application/json'
     }
   });
 
-  window.location.href = "dashboard.html";
+  // Redirect after successful submission
+  window.location.href="dashboard.html";
 });
- </script>
+</script>
+
+</body>
+</html>
